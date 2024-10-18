@@ -1,0 +1,37 @@
+version: "1.0"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./dockerfile
+    container_name: fastapi-backend-${DB_NAME}-app
+    restart: always
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - HELPER_EMAIL_HOST=${HELPER_EMAIL_HOST}
+      - HELPER_EMAIL_PORT=${HELPER_EMAIL_PORT}
+      - HELPER_EMAIL=${HELPER_EMAIL}
+      - HELPER_EMAIL_PASSWORD=${HELPER_EMAIL_PASSWORD}
+      - HELPER_EMAIL_APP_NAME=${HELPER_EMAIL_APP_NAME}
+      - APP_URI=${APP_URI}
+      - DB_NAME=${DB_NAME}
+    pull_policy: build
+    networks:
+      - main-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./dockerfile
+      args:
+        API_URI: ${API_URI}
+    container_name: angular-frontend-${DB_NAME}-app
+    restart: always
+    pull_policy: build
+    networks:
+      - main-network
+
+networks:
+  main-network:
+    external: true
