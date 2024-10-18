@@ -1,0 +1,55 @@
+<aside
+  id="default-sidebar"
+  class="fixed top-0 left-0 z-40 w-64 h-screen bg-gray-50 dark:bg-neutral-950 border-r-[1px] border-neutral-600 transition-transform -translate-x-full sm:translate-x-0"
+  aria-label="Sidebar"
+>
+  <div class="h-full flex flex-col">
+    <!-- Sidebar Header -->
+    <!-- Company Logo and Name -->
+    <!-- <div class="flex items-center justify-start px-2.5 space-x-2">
+      <ng-container *ngIf="company_logo; else elseTemplate">
+        <img [src]="company_logo" class="size-6 rounded-full" alt="logo" />
+      </ng-container>
+      <ng-template #elseTemplate></ng-template>
+      <div class="font-medium text-2xl font-inter text-zinc-100">
+        Company Name
+      </div>
+    </div>-->
+
+    <!-- Sidebar Buttons -->
+    <div
+      class="px-2.5 flex justify-between space-x-1 text-gray-600 dark:text-gray-400 mt-4"
+    >
+      <button
+        routerLink="/dashboard"
+        id="sidebar-new-chat-button"
+        class="flex flex-1 justify-between rounded-xl px-2 py-2 hover:bg-gray-100 dark:hover:bg-zinc-900 transition"
+        draggable="false"
+      >
+        <div class="self-center font-medium text-sm font-inter text-zinc-100">
+          Home
+        </div>
+        <div class="self-center ml-auto">
+          <svg
+            class="w-6 h-6 text-gray-800 dark:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              size="5"
+              d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5"
+            />
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+</aside>

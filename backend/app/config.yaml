@@ -1,0 +1,2 @@
+version: "1.0"
+secret_key: "create_secret_key_with_openssl"

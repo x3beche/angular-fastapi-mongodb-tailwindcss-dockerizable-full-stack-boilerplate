@@ -1,0 +1,119 @@
+<header class="antialiased">
+  <nav
+    class="bg-white border-b-[1px] border-neutral-600 px-4 lg:px-6 py-2.5 dark:bg-neutral-950"
+  >
+    <div class="flex flex-wrap justify-between items-center py-1">
+      <button
+        data-drawer-target="default-sidebar"
+        data-drawer-toggle="default-sidebar"
+        aria-controls="default-sidebar"
+        type="button"
+        class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      >
+        <span class="sr-only">Open sidebar</span>
+        <svg
+          class="w-6 h-6"
+          aria-hidden="true"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+          ></path>
+        </svg>
+      </button>
+      <div class="flex justify-start items-center">
+        <p class="flex mr-4 font-inter">
+          <span
+            class="self-center text-2xl font-semibold font-inter whitespace-nowrap dark:text-white"
+          >
+            {{ this.header_title }}
+          </span>
+        </p>
+      </div>
+      <div class="flex items-center lg:order-2 font-inter">
+        <button
+          data-dropdown-offset-skidding="-90"
+          type="button"
+          class="flex mx-3 text-sm bg-zinc-950 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+          id="user-menu-button"
+          aria-expanded="false"
+          data-dropdown-toggle="dropdown"
+        >
+          <span class="sr-only">Open user menu</span>
+          <ng-container *ngIf="profile_picture_url; else elseTemplate">
+            <img
+              class="w-8 h-8 rounded-full"
+              src="{{ profile_picture_url }}"
+              alt="user photo"
+            />
+          </ng-container>
+          <ng-template #elseTemplate> </ng-template>
+        </button>
+        <div
+          class="hidden z-50 my-4 w-56 text-base list-none bg-white rounded-xl border-[1px] border-neutral-600 pe-3 divide-y divide-gray-100 shadow dark:bg-neutral-900 dark:divide-gray-600"
+          id="dropdown"
+        >
+          <div class="py-3 px-4">
+            <span
+              class="block text-sm font-semibold font-inter text-gray-900 dark:text-white"
+              >{{ user.first_name }} {{ user.last_name }}</span
+            >
+            <span
+              class="block text-sm text-gray-500 truncate dark:text-gray-400"
+              >{{ user.email }}</span
+            >
+          </div>
+          <ul
+            class="py-1 text-gray-500 dark:text-gray-400"
+            aria-labelledby="dropdown"
+          >
+            <li>
+              <a
+                href="/profile/settings"
+                class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
+                >Account Settings</a
+              >
+            </li>
+          </ul>
+          <ul
+            *ngIf="['admin', 'manager'].includes(user.role)"
+            class="py-1 text-gray-500 dark:text-gray-400"
+            aria-labelledby="dropdown"
+          >
+            <li *ngIf="['admin', 'manager'].includes(user.role)">
+              <a
+                href="/admin/users"
+                class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
+                >User Management</a
+              >
+            </li>
+            <li *ngIf="['admin'].includes(user.role)">
+              <a
+                href="/admin/content_manager"
+                class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-400 dark:hover:text-white"
+                >Content Manager</a
+              >
+            </li>
+          </ul>
+          <ul
+            class="py-1 text-gray-500 dark:text-gray-400"
+            aria-labelledby="dropdown"
+          >
+            <li>
+              <a
+                href="#"
+                (click)="logout()"
+                class="block py-2 px-4 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                >Sign out</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
