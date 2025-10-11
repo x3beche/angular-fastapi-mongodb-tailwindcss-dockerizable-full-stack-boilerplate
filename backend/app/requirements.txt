@@ -11,5 +11,5 @@ pydantic==2.9.2
 pydantic[email]
 uvicorn
 uvicorn[standard]
-bcrypt
+bcrypt==4.0.1
 python-multipart==0.0.5
