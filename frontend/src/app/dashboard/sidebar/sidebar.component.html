@@ -1,54 +1,67 @@
+<!-- src/app/components/sidebar/sidebar.component.html -->
 <aside
   id="default-sidebar"
-  class="fixed top-0 left-0 z-40 w-64 h-screen bg-gray-50 dark:bg-neutral-950 border-r-[1px] border-neutral-600 transition-transform -translate-x-full sm:translate-x-0"
+  class="fixed top-0 left-0 z-40 h-screen bg-gray-50 dark:bg-neutral-950 border-r-[1px] border-neutral-600 transition-all -translate-x-full sm:translate-x-0"
+  [ngClass]="{ 
+    'w-64': !isCollapsed, 
+    'w-16': isCollapsed 
+  }"
   aria-label="Sidebar"
 >
   <div class="h-full flex flex-col">
-    <!-- Sidebar Header -->
-    <!-- Company Logo and Name -->
-    <!-- <div class="flex items-center justify-start px-2.5 space-x-2">
-      <ng-container *ngIf="company_logo; else elseTemplate">
-        <img [src]="company_logo" class="size-6 rounded-full" alt="logo" />
-      </ng-container>
-      <ng-template #elseTemplate></ng-template>
-      <div class="font-medium text-2xl font-inter text-zinc-100">
-        Company Name
-      </div>
-    </div>-->
+    <!-- Collapse Button -->
+    <div class="px-2.5 flex justify-end mt-4">
+      <button
+        (click)="onToggle()"
+        class="flex items-center justify-center w-10 h-10 hover:bg-gray-100 dark:hover:bg-zinc-900 rounded-lg transition"
+      >
+        <svg
+          class="w-5 h-5 text-gray-800 dark:text-white transition-transform"
+          [class.rotate-180]="isCollapsed"
+          [style.transition]="isInitialLoad ? 'none' : null"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+    </div>
 
     <!-- Sidebar Buttons -->
-    <div
-      class="px-2.5 flex justify-between space-x-1 text-gray-600 dark:text-gray-400 mt-4"
-    >
+    <div class="px-2.5 mt-4">
       <button
         routerLink="/dashboard"
         id="sidebar-new-chat-button"
-        class="flex flex-1 justify-between rounded-xl px-2 py-2 hover:bg-gray-100 dark:hover:bg-zinc-900 transition"
+        class="flex items-center rounded-xl px-3 py-2.5 hover:bg-gray-100 dark:hover:bg-zinc-900 transition w-full"
+        [ngClass]="{
+          'justify-start gap-3': !isCollapsed,
+          'justify-center flex-col gap-1': isCollapsed
+        }"
         draggable="false"
       >
-        <div class="self-center font-medium text-sm font-inter text-zinc-100">
-          Home
-        </div>
-        <div class="self-center ml-auto">
-          <svg
-            class="w-6 h-6 text-gray-800 dark:text-white"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              size="5"
-              d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5"
-            />
-          </svg>
-        </div>
+        <!-- Icon -->
+        <svg
+          [ngClass]="{ 'w-5 h-5': !isCollapsed, 'w-6 h-6': isCollapsed }"
+          class="text-gray-800 dark:text-white flex-shrink-0 w-6 h-6"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 1 1 1 1v3h3a1 1 0 0 0 1-1v-8.5"
+          />
+        </svg>
+
+        <!-- Text -->
+        <span *ngIf="!isCollapsed" class="font-medium text-sm font-inter text-zinc-100">Home</span>
+        <span *ngIf="isCollapsed" class="font-medium text-xs font-inter text-zinc-100">Home</span>
       </button>
     </div>
   </div>

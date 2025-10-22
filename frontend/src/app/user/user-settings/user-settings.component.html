@@ -1,12 +1,15 @@
 <app-sidebar></app-sidebar>
 
-<div class="sm:ml-64 flex flex-col h-screen">
+<div 
+  class="flex flex-col h-screen bg-black" 
+  [ngClass]="{'sm:ml-64': !sidebarCollapsed, 'sm:ml-16': sidebarCollapsed}"
+>
   <app-header header_title="Profile Settings"></app-header>
-  <div class="antialiased bg-gray-50 dark:bg-neutral-950 font-inter">
+  <div class="antialiased bg-gray-50 dark:bg-black font-inter">
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-3 dark:bg-neutral-950"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 m-3"
     >
-      <div class="border-[1px] rounded-lg dark:border-neutral-600/50 p-3">
+      <div class="border-[1px] rounded-lg dark:border-neutral-600/50 p-3 dark:bg-neutral-950">
         <h3 class="text-xl dark:text-neutral-300 font-semibold mb-2">
           User Informations
         </h3>
@@ -104,7 +107,7 @@
           </button>
         </div>
       </div>
-      <div class="border-[1px] rounded-lg dark:border-neutral-600/50 p-3">
+      <div class="border-[1px] rounded-lg dark:border-neutral-600/50 p-3 dark:bg-neutral-950">
         <!-- Password Change Section -->
         <h3 class="text-xl font-semibold mb-2 dark:text-neutral-300">
           Password
@@ -193,7 +196,7 @@
           </button>
         </div>
       </div>
-      <div class="border-[1px] rounded-lg dark:border-neutral-600/50 p-3">
+      <div class="border-[1px] rounded-lg dark:border-neutral-600/50 p-3 dark:bg-neutral-950">
         <!-- Password Change Section -->
         <h3 class="text-xl font-semibold mb-2 dark:text-neutral-300">
           Profile Photo

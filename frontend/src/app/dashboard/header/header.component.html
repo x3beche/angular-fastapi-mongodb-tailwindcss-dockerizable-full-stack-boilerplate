@@ -1,6 +1,6 @@
 <header class="antialiased">
   <nav
-    class="bg-white border-b-[1px] border-neutral-600 px-4 lg:px-6 py-2.5 dark:bg-neutral-950"
+    class="bg-white border-b-[1px] border-neutral-600 px-4 lg:px-6 py-1.5 dark:bg-neutral-950"
   >
     <div class="flex flex-wrap justify-between items-center py-1">
       <button
@@ -38,7 +38,7 @@
         <button
           data-dropdown-offset-skidding="-90"
           type="button"
-          class="flex mx-3 text-sm bg-zinc-950 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
+          class="flex mx-3 text-sm rounded-md md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 overflow-hidden"
           id="user-menu-button"
           aria-expanded="false"
           data-dropdown-toggle="dropdown"
@@ -46,7 +46,7 @@
           <span class="sr-only">Open user menu</span>
           <ng-container *ngIf="profile_picture_url; else elseTemplate">
             <img
-              class="w-8 h-8 rounded-full"
+              class="w-10 h-10 object-cover border-neutral-600 border-2 rounded-md"
               src="{{ profile_picture_url }}"
               alt="user photo"
             />
